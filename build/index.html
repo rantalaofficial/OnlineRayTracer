@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Online Ray Tracer</title>
+
+    <script src="./jquery-3.6.1.min.js"></script>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: darkgray;
+        }
+        .btn {
+            color: black; 
+            padding: 12px; 
+            border: 2px solid black;
+            font-size: 12px;
+        }
+        .btn:active {
+            opacity: 0.5;
+        }
+
+        .tools-radio {
+            text-align: center;
+            list-style-type: none;
+            margin: 25px 0 0 0;
+            padding: 0;
+            display: inline-block
+        }
+
+        .tools-radio li {
+            float: left;
+            margin: 0 11px 0 0;
+            width: 100px;
+            height: 44px;
+            position: relative;
+        }
+
+        .tools-radio label,
+        .tools-radio input {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .tools-radio input[type="radio"] {
+            opacity: 0.01;
+            z-index: 100;
+        }
+
+        .tools-radio input[type="radio"]+label,
+        .Checked+label {
+            background-color: white;
+        }
+
+        .tools-radio input[type="radio"]:checked+label,
+        .Checked+label {
+            background: lightgreen;
+        }
+
+        .tools-radio label {
+            padding: 5px;
+            border: 2px solid black;
+            cursor: pointer;
+            z-index: 90;
+            padding-top: 12px;
+        }
+
+        .tools-radio label:hover {
+            background: #DDD;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <h2>Online Ray Tracer By <a href="https://github.com/rant4la" style="color: green;">Uranium</a></h2>
+
+    <canvas id="mainCanvas" width="800" height="500"></canvas>
+
+    <div>
+        <ul class="tools-radio">
+            <li>
+              <input type="radio" value="0" id="wall" name="toolRadio" checked="true" />
+              <label for="wall">Add wall</label>
+            </li>
+            <li>
+              <input type="radio" value="100" id="light" name="toolRadio" />
+              <label for="light">Add light</label>
+            </li>
+            <li>
+              <input type="radio" value="-1" id="erase" name="toolRadio" />
+              <label for="erase">Erase</label>
+            </li>
+        </ul>
+    </div>
+    
+    <div style="margin: 8px;">
+        <button style="background-color: red;" class="btn" id="resetSceneBtn">Reset Scene</button>
+        <button style="background-color: blue;" class="btn" id="renderSceneBtn">Render Scene</button>
+        <p>Rendering time: <span style="font-weight: 1000" id="renderingTimeText"></span></p>
+    </div>
+    
+    <script src="./Point.js"></script>
+    <script src="./Light.js"></script>
+    <script src="./render.js"></script>
+    <script src="./main.js"></script>
+
+</body>
+</html>
